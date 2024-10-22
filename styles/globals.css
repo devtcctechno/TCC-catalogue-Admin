@@ -1,0 +1,194 @@
+html,
+body {
+  min-height: 100%;
+}
+
+#__next {
+  height: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+code {
+  font-family: 'Public Sans', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  padding: 0.1rem 0.4rem;
+  font-size: 90%;
+  color: #d400ff;
+  border-radius: 0.1335rem;
+}
+code:not([class*='language-']):before,
+code:not([class*='language-']):after {
+  content: '`';
+}
+code[class*='language-'] {
+  padding: 0;
+}
+
+/* .config-filter-content::-webkit-scrollbar {
+  width: 5px;
+} */
+/* Info Modal CSS */
+.rdw-embedded-modal {
+  left: -240px !important;
+}
+.rdw-image-modal {
+  left: -240px !important;
+}
+.rdw-emoji-modal {
+  left: -240px !important;
+}
+/* Table Container */
+.scrollbar-container {
+  position: static !important;
+  height: 100%;
+}
+.main-table {
+  height: '850px';
+  width: '100%';
+}
+.css-zyg32b {
+  max-width: 100% !important;
+}
+.css-z6zupw-MuiToolbar-root {
+  max-width: 100% !important;
+}
+.css-133fyc8 {
+  max-width: 100% !important;
+}
+
+.MuiDataGrid-virtualScrollerContent {
+  overflow-y: auto !important;
+  height: 100% !important;
+}
+.css-1grl8tv {
+  overflow-y: auto !important;
+}
+.config-filter-content ::-webkit-scrollbar {
+  width: 5px;
+  scroll-behavior: smooth;
+}
+/* .css-1rtad1 {
+  height: 13px !important;
+  bottom: -7px !important;
+} */
+
+/* .css-1j1k02n-MuiDataGrid-root .MuiDataGrid-cell:not(.MuiDataGrid-cellCheckbox) {
+  display: flex !important;
+  align-items: center !important;
+} */
+
+.config-filter-content ::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+}
+
+.config-filter-content ::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+}
+.image-hover :hover {
+  height: 45px;
+  width: 45px;
+}
+.css-1b9e9gy {
+  width: 5px !important;
+}
+.css-1rtad1 {
+  height: 5px !important;
+}
+.image_main_div {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e1e1e1;
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 15px;
+  max-width: 100% !important;
+}
+.image_inner_div {
+  display: flex;
+}
+.content_main_div {
+  max-width: 210px !important;
+  margin-right: 10px;
+  margin-left: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.image_div {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.remove_image_div {
+  display: flex;
+  align-items: center;
+}
+
+.demo-wrapper {
+  border: 1px solid red !important;
+}
+
+.editor-validaton-wrapper {
+  border: 1px solid #e1e1e1 !important;
+}
+.css-8yphpr {
+  height: 0px !important;
+}
+.css-iz6y64-MuiLinearProgress-bar1 {
+  background-color: green !important;
+}
+.relative-container {
+  position: relative;
+  height: 350px;
+}
+
+.centered-switch {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.progress-buttons {
+  top: 10%;
+  left: 50%;
+  position: absolute;
+  transform: translate(50%, -50%);
+  z-index: 100;
+  width: max-content;
+}
+.progressState {
+  width: 16px;
+  height: 16px;
+  margin-top: 30px;
+  border-radius: 50%;
+  background-color: #323232;
+  box-shadow: 32px 0 #414040, -32px 0 #1f1f1f;
+  position: relative;
+  animation: flash 1s ease-out infinite alternate;
+  z-index: 9999;
+}
+@media print {
+  @page {
+    size: auto;
+    margin: 0;
+  }
+  body {
+    margin: 0;
+  }
+}
+/* ::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+} */

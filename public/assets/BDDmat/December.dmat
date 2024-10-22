@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "version": 4.6,
+    "type": "DiamondMaterial",
+    "generator": "DiamondMaterial.toJSON"
+  },
+  "name": "diamond",
+  "uuid": "e747111f-9315-4197-a473-c41ab879a251",
+  "color": 14086903,
+  "envMapIntensity": 1.5,
+  "envMapIndex": 0,
+  "envMapRotationOffset": 0,
+  "dispersion": 0,
+  "squashFactor": 0.98,
+  "geometryFactor": 0.5,
+  "gammaFactor": 1,
+  "absorptionFactor": 3.5,
+  "reflectivity": 0.15999999999999998,
+  "refractiveIndex": 2.73,
+  "rayBounces": 5,
+  "diamondOrientedEnvMap": 0,
+  "boostFactors": {
+    "x": 1,
+    "y": 1,
+    "z": 1.2,
+    "isVector3": true
+  },
+  "transmission": 0,
+  "isDiamondMaterialParameters": true,
+  "type": "DiamondMaterial",
+  "userData": {
+    "separateEnvMapIntensity": true,
+    "_baseMaterial": "1b4a6a2e-2799-4d0d-95e1-79918bc5ea59",
+    "uuid": "e747111f-9315-4197-a473-c41ab879a251"
+  }
+}

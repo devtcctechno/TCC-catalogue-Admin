@@ -1,0 +1,272 @@
+{
+  "data": [
+    {
+      "title": "Stock Id",
+      "filed": "stock_id"
+    },
+    {
+      "title": "Availability",
+      "filed": "availability"
+    },
+    {
+      "title": "Stone",
+      "filed": "stone"
+    },
+    {
+      "title": "Stone Type",
+      "filed": "stone_type"
+    },
+    {
+      "title": "Shape",
+      "filed": "shape"
+    },
+    {
+      "title": "Weight",
+      "filed": "weight"
+    },
+    {
+      "title": "Color",
+      "filed": "color"
+    },
+    {
+      "title": "Clarity",
+      "filed": "clarity"
+    },
+    {
+      "title": "MM Size",
+      "filed": "mm_size"
+    },
+    {
+      "title": "Seive Size",
+      "filed": "seive_size"
+    },
+    {
+      "title": "Cut",
+      "filed": "cut_grade"
+    },
+    {
+      "title": "Off Rap",
+      "filed": "off_RAP"
+    },
+    {
+      "title": "Polish",
+      "filed": "polish"
+    },
+    {
+      "title": "Symmetry",
+      "filed": "symmetry"
+    },
+    {
+      "title": "Fluorescence intensity",
+      "filed": "fluorescence_intensity"
+    },
+    {
+      "title": "Fluorescence color",
+      "filed": "fluorescence_color"
+    },
+    {
+      "title": "Measurements",
+      "filed": "measurements"
+    },
+    {
+      "title": "Lab",
+      "filed": "lab"
+    },
+    {
+      "title": "Certificate",
+      "filed": "certificate"
+    },
+    {
+      "title": "Certificate url",
+      "filed": "certificate_url"
+    },
+    {
+      "title": "Treatment",
+      "filed": "treatment"
+    },
+    {
+      "title": "Fancy color",
+      "filed": "fancy_color"
+    },
+    {
+      "title": "Fancy color intensity",
+      "filed": "fancy_color_intensity"
+    },
+    {
+      "title": "Fancy color overtone",
+      "filed": "fancy_color_overtone"
+    },
+    {
+      "title": "Depth",
+      "filed": "depth_per"
+    },
+    {
+      "title": "Table",
+      "filed": "table_per"
+    },
+    {
+      "title": "Girdle thin",
+      "filed": "girdle_thin"
+    },
+    {
+      "title": "Girdle thick",
+      "filed": "girdle_thick"
+    },
+    {
+      "title": "Girdle per",
+      "filed": "girdle_per"
+    },
+    {
+      "title": "Girdle condition",
+      "filed": "girdle_condition"
+    },
+    {
+      "title": "Culet size",
+      "filed": "culet_size"
+    },
+    {
+      "title": "Culet condition",
+      "filed": "culet_condition"
+    },
+    {
+      "title": "Crown height",
+      "filed": "crown_height"
+    },
+    {
+      "title": "Crown angle",
+      "filed": "crown_angle"
+    },
+    {
+      "title": "Pavilion depth",
+      "filed": "pavilion_depth"
+    },
+    {
+      "title": "Pavilion angle",
+      "filed": "pavilion_angle"
+    },
+    {
+      "title": "Laser inscription",
+      "filed": "laser_inscription"
+    },
+    {
+      "title": "Cert comment",
+      "filed": "cert_comment"
+    },
+    {
+      "title": "Sort description",
+      "filed": "sort_description"
+    },
+    {
+      "title": "Long description",
+      "filed": "long_description"
+    },
+    {
+      "title": "Country",
+      "filed": "country"
+    },
+    {
+      "title": "State",
+      "filed": "state"
+    },
+    {
+      "title": "City",
+      "filed": "city"
+    },
+    {
+      "title": "Time to location",
+      "filed": "time_to_location"
+    },
+    {
+      "title": "In matched pair separable",
+      "filed": "in_matched_pair_separable"
+    },
+    {
+      "title": "Pair stock",
+      "filed": "pair_stock"
+    },
+    {
+      "title": "Parcel stone",
+      "filed": "parcel_stone"
+    },
+    {
+      "title": "Image link",
+      "filed": "image_link"
+    },
+    {
+      "title": "Video link",
+      "filed": "video_link"
+    },
+    {
+      "title": "Sari loupe",
+      "filed": "sari_loupe"
+    },
+    {
+      "title": "Trade show",
+      "filed": "trade_show"
+    },
+    {
+      "title": "Key of symbols",
+      "filed": "key_of_symbols"
+    },
+    {
+      "title": "Star length",
+      "filed": "star_length"
+    },
+    {
+      "title": "Center inclusion",
+      "filed": "center_inclusion"
+    },
+    {
+      "title": "Black inclusion",
+      "filed": "black_inclusion"
+    },
+    {
+      "title": "Member comment",
+      "filed": "member_comment"
+    },
+    {
+      "title": "Report issue date",
+      "filed": "report_issue_date"
+    },
+    {
+      "title": "Report type",
+      "filed": "report_type"
+    },
+    {
+      "title": "Lab location",
+      "filed": "lab_location"
+    },
+    {
+      "title": "Brand",
+      "filed": "brand"
+    },
+    {
+      "title": "Milky",
+      "filed": "milky"
+    },
+    {
+      "title": "Eye clean",
+      "filed": "eye_clean"
+    },
+    {
+      "title": "H&A",
+      "filed": "h_a"
+    },
+    {
+      "title": "BGM",
+      "filed": "bgm"
+    },
+    {
+      "title": "Growth type",
+      "filed": "growth_type"
+    },
+    {
+      "title": "Total price",
+      "filed": "total_price"
+    },
+    {
+      "title": "Price ct",
+      "filed": "price_ct"
+    }
+  ]
+}
