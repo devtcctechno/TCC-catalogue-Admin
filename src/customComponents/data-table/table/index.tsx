@@ -242,14 +242,15 @@ const TccDataTable = ({ label, defaultValue, inputLabel, Options, onChange, valu
                             rows.gustName &&
                             <div>{row[rows.value] ? <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
                                 {row[rows.value]}
-                            </Typography> : <div style={{ display: 'flex' }}><CustomChip
+                            </Typography> : 
+                            <div style={{ display: 'flex' }}><CustomChip
                                 rounded
                                 skin='light'
                                 size='small'
                                 label="G"
                                 color="success"
-                                sx={{ textTransform: 'capitalize' }}
-                            /><Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize', marginLeft: 2 }}>
+                                sx={{ textTransform: 'capitalize', marginTop: '15px', }}
+                            /><Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize', marginLeft: 2, marginTop: '15px', }}>
                                     {row[rows.value2]}
                                 </Typography></div>}</div>
                         }
