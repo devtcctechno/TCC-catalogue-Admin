@@ -37,14 +37,28 @@ const GuestGuard = (props: GuestGuardProps) => {
       if (SECURE_COMMUNICATION === "true") {
         if (decryptRequestData(data).code === 200 || decryptRequestData(data).code === '200') {
           const companyInfo = decryptRequestData(data).data
-          const finalData = { dark_image_path: `${companyInfo?.images?.darakImage}`, favicon_image_path: `${companyInfo?.images?.faviconImage}`, company_name: `${companyInfo?.companyInfo?.company_name}` }
+          const finalData = { 
+            dark_image_path: `${companyInfo?.images?.darakImage}`, 
+            favicon_image_path: `${companyInfo?.images?.faviconImage}`, 
+            company_name: `${companyInfo?.companyInfo?.company_name}` ,
+            copy_right: `${companyInfo?.companyInfo?.copy_right}`,
+          company_phone: `${companyInfo?.companyInfo?.company_phone}`,
+          web_link: `${companyInfo?.companyInfo?.web_link}`,
+          company_address: `${companyInfo?.companyInfo?.company_address}`,
+          }
           updateCompanyInfo(finalData)
           Cookies.set("Comapany_info", JSON.stringify(finalData))
         }
       } else {
         if (data.code === 200 || data.code === '200') {
           const companyInfo = data.data
-          const finalData = { dark_image_path: `${companyInfo?.images?.darakImage}`, favicon_image_path: `${companyInfo?.images?.faviconImage}`, company_name: `${companyInfo?.companyInfo?.company_name}` }
+          const finalData = { 
+            dark_image_path: `${companyInfo?.images?.darakImage}`, 
+            favicon_image_path: `${companyInfo?.images?.faviconImage}`, 
+            company_name: `${companyInfo?.companyInfo?.company_name}`,
+            company_phone: `${companyInfo?.companyInfo?.company_phone}`,
+            web_link: `${companyInfo?.companyInfo?.web_link}`,
+            company_address: `${companyInfo?.companyInfo?.company_address}` }
           updateCompanyInfo(finalData)
           Cookies.set("Comapany_info", JSON.stringify(finalData))
         }
