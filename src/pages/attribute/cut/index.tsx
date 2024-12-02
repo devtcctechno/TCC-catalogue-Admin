@@ -13,6 +13,8 @@ import DeleteDataModel from 'src/customComponents/delete-model'
 import { createPagination } from 'src/utils/sharedFunction'
 import { ICommonPagination } from 'src/data/interface'
 import { Controller, useForm } from 'react-hook-form'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 const DiamondCut = () => {
 
@@ -204,6 +206,10 @@ const DiamondCut = () => {
     }
   }
 
+  const onInfoSubmit = (data: any) => {
+    toggleEditorDrawer()
+  }
+
   const column = [
 
     {
@@ -258,6 +264,10 @@ const DiamondCut = () => {
                 clearFormDataHandler()
               }}
               ButtonName='Add Diamond Cut'
+              infoButton
+              infotoggle={() => {
+                toggleEditorDrawer()
+              }}
             />
 
           </Box>
@@ -353,6 +363,12 @@ const DiamondCut = () => {
           </form>
         </Box>
       </Drawer>
+      <InfoSection
+        onsubmit={onInfoSubmit}
+        info_key={Info_Key.Cut}
+        drawerTitle="Cut Info"
+        drawerToggle={() => toggleEditorDrawer()}
+        drawerACtion={editorDrawerAction} />
       <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={deleteApi} />
     </Grid>
   )
