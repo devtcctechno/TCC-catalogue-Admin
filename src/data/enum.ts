@@ -41,6 +41,7 @@ export enum Diamond_type {
   Lab_grown = 2,
   Both = 3
 }
+
 export enum Info_Key {
   Metal_tone = 'metal_tone',
   Metal_karat = 'metal_karat',
@@ -54,7 +55,13 @@ export enum Info_Key {
   Setting_type = 'setting_type',
   Side_setting = 'side_setting',
   Brands = 'brands',
-  Collection = 'collection'
+  Collection = 'collection',
+  Cut = 'cut',
+  Metal_Master = 'metal_master',
+  MM_Size = 'mm_size',
+  Item_Size = 'item_size',
+  Item_Length = 'item_length',
+  Tag = 'tag'
 }
 
 export enum IMAGE_UPLOAD_TYPE {
