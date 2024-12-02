@@ -15,8 +15,8 @@ const TccEditor = (props: { getHtmlData?: any, data?: any, called?: boolean, err
     }, [editorState]);
 
     useEffect(() => {
-        if (props.data !== <p></p>) {
-            const blocksFromHTML = convertFromHTML(props.data);
+        if (props.data && props?.data !== <p></p>) {
+            const blocksFromHTML = convertFromHTML(props?.data);
             const content = ContentState.createFromBlockArray(
                 blocksFromHTML.contentBlocks,
                 blocksFromHTML.entityMap
