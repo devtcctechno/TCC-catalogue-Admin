@@ -813,12 +813,13 @@ export const STATUS_UPDATE_CATEGORY = (payload: any) =>
 export const SEARCHABLE_CATEGORY = (payload: any) =>
   serviceMaker(`${apiEndPoints.SEARCHABLE_CATEGORY}`, httpMethods.PUT, payload)
 
-export const TAG_ADD = (payload: any) => serviceMaker(`${apiEndPoints.TAG_ADD}`, httpMethods.POST, payload)
+export const TAG_ADD = (payload: any) => serviceMaker(`${apiEndPoints.TAG}`, httpMethods.POST, payload)
 export const TAG_GET_ALL = (payload: ICommonPagination) =>
-  serviceMaker(`${apiEndPoints.TAG_GET_ALL}?${getQueryUrlFormPagiantion(payload)}`, httpMethods.GET)
-export const TAG_EDIT = (payload: any) => serviceMaker(`${apiEndPoints.TAG_EDIT}`, httpMethods.PUT, payload)
-export const TAG_DELETE = (payload: any) => serviceMaker(`${apiEndPoints.TAG_DELETE}`, httpMethods.POST, payload)
-export const TAG_STATUS = (payload: any) => serviceMaker(`${apiEndPoints.TAG_STATUS}`, httpMethods.PUT, payload)
+  serviceMaker(`${apiEndPoints.TAG}?${getQueryUrlFormPagiantion(payload)}`, httpMethods.GET)
+export const TAG_EDIT = (id: string, payload: any) =>
+  serviceMaker(`${apiEndPoints.TAG}/${id}`, httpMethods.PUT, payload)
+export const TAG_DELETE = (id: string) => serviceMaker(`${apiEndPoints.TAG}/${id}`, httpMethods.DELETE)
+export const TAG_STATUS = (id: string) => serviceMaker(`${apiEndPoints.TAG}/${id}`, httpMethods.PATCH)
 
 export const ADD_MARKETING_POPUP = (payload: any) =>
   serviceMaker(`${apiEndPoints.ADD_MARKETING_POPUP}`, httpMethods.POST_CONFIG, payload, {

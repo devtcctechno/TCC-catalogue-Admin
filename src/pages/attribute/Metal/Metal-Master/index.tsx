@@ -12,6 +12,8 @@ import { toast } from 'react-hot-toast'
 import { ICommonPagination } from 'src/data/interface'
 import { createPagination } from 'src/utils/sharedFunction'
 import DeleteDataModel from 'src/customComponents/delete-model'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 const Metalmaster = () => {
 
@@ -25,8 +27,11 @@ const Metalmaster = () => {
     const [result, setResult] = useState([])
     const [metalMasterId, setMetalMasterId] = useState();
     const [showModel, setShowModel] = useState(false);
+    const [editorDrawerAction, setEditorDrawerAction] = useState(false)
 
     const toggleAddMetalMasterDrawer = () => setDrawerAction(!drawerAction)
+    const toggleEditorDrawer = () => setEditorDrawerAction(!editorDrawerAction)
+
 
     const defaultValues = {
         metalMasterName: metalMasterName,
@@ -47,7 +52,6 @@ const Metalmaster = () => {
         toggleAddMetalMasterDrawer();
         setMetalMasterId(data.id);
     }
-
     const clearFormDataHandler = () => {
         reset()
     }
@@ -221,6 +225,10 @@ const Metalmaster = () => {
         }
     }
 
+    const onInfoSubmit = (data: any) => {
+        toggleEditorDrawer()
+    }
+
     return (
         <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -228,10 +236,14 @@ const Metalmaster = () => {
                     <CardHeader title='Metal Master'></CardHeader>
                     <Divider />
                     <Box>
-                        <TCCTableHeader value={searchFilter}
+                        <TCCTableHeader
+                            value={searchFilter}
                             onChange={(e: any) => setSearchFilter(e.target.value)}
+                            infoButton
+                            infotoggle={() => {
+                                toggleEditorDrawer()
+                            }}
                         />
-
                     </Box>
                     <Box sx={{ width: '100%' }}>
                         <TccDataTable
@@ -297,6 +309,12 @@ const Metalmaster = () => {
                     </form>
                 </Box>
             </Drawer>
+            <InfoSection
+                onsubmit={onInfoSubmit}
+                info_key={Info_Key.Metal_Master}
+                drawerTitle="Metal Info"
+                drawerToggle={() => toggleEditorDrawer()}
+                drawerACtion={editorDrawerAction} />
             <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={deleteApi} />
 
         </Grid>

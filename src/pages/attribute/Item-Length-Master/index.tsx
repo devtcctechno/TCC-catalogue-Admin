@@ -12,6 +12,8 @@ import { appErrors, FIELD_REQUIRED, SEARCH_DELAY_TIME } from 'src/AppConstants'
 import { ICommonPagination } from 'src/data/interface'
 import { createPagination } from 'src/utils/sharedFunction'
 import DeleteDataModel from 'src/customComponents/delete-model'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 const Itemlength = () => {
 
@@ -24,10 +26,10 @@ const Itemlength = () => {
     const [id, setId] = useState();
     const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
     const [showModel, setShowModel] = useState(false);
-
+    const [editorDrawerAction, setEditorDrawerAction] = useState(false)
 
     const toggleAddItemLenghDrawer = () => setDrawerAction(!drawerAction)
-
+    const toggleEditorDrawer = () => setEditorDrawerAction(!editorDrawerAction)
 
     const defaultValues = {
         name: name,
@@ -240,7 +242,9 @@ const Itemlength = () => {
         }
     }
 
-
+    const onInfoSubmit = (data: any) => {
+        toggleEditorDrawer()
+    }
     return (
         <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -256,6 +260,10 @@ const Itemlength = () => {
                                 clearFormDataHandler()
                             }}
                             ButtonName='Add Item Length'
+                            infoButton
+                            infotoggle={() => {
+                                toggleEditorDrawer()
+                            }}
                         />
 
                     </Box>
@@ -321,6 +329,12 @@ const Itemlength = () => {
                     </form>
                 </Box>
             </Drawer>
+            <InfoSection
+                onsubmit={onInfoSubmit}
+                info_key={Info_Key.Item_Length}
+                drawerTitle="Item Length Info"
+                drawerToggle={() => toggleEditorDrawer()}
+                drawerACtion={editorDrawerAction} />
             <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={deleteApi} />
 
         </Grid>

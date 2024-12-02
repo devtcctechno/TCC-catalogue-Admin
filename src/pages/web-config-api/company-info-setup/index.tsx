@@ -23,6 +23,7 @@ const CompanyInfoSetup = () => {
   const [companyPhone, setCompanyPhone] = useState("")
   const [companyAbout, setCompanyAbout] = useState("")
   const [companyCopyRight, setCompanyCopyRight] = useState("")
+  const [companyAddress, setCompanyAddress] = useState("")
 
   const [webSiteLink, setWebSiteLink] = useState("")
   const [faceBookLink, setFaceBookLink] = useState("")
@@ -56,7 +57,15 @@ const CompanyInfoSetup = () => {
       if (data.code === 200 || data.code === "200") {
         const companyInfo = data.data.filter((t: any) => t.key === COMPANY_INFO_KEY)[0]
         // Cookies.set("Comapany_info", JSON.stringify(companyInfo))
-        const finalData = { dark_image_path: `${companyInfo?.dark_image_path}`, favicon_image_path: `${companyInfo?.favicon_image_path}`, company_name: `${companyInfo?.company_name}` }
+        const finalData = { 
+          dark_image_path: `${companyInfo?.dark_image_path}`, 
+          favicon_image_path: `${companyInfo?.favicon_image_path}`, 
+          company_name: `${companyInfo?.company_name}`,
+          copy_right: `${companyInfo?.copy_right}`,
+          company_phone: `${companyInfo?.company_phone}`,
+          web_link: `${companyInfo?.web_link}`,
+          company_address: `${companyInfo?.company_address}`,
+        }
         updateCompanyInfo(finalData)
         const statusValue = companyInfo?.announce_is_active == "1" ? "checked" : "unchecked"
         setRadioButtonStripe(statusValue)
@@ -67,6 +76,7 @@ const CompanyInfoSetup = () => {
         setCompanyPhone(companyInfo?.company_phone)
         setCompanyAbout(companyInfo?.sort_about)
         setWebSiteLink(companyInfo?.web_link)
+        setCompanyAddress(companyInfo?.company_address)
         setFaceBookLink(companyInfo?.facebook_link)
         setInstagramLink(companyInfo?.insta_link)
         setYouTubeLink(companyInfo?.youtube_link)
@@ -101,6 +111,7 @@ const CompanyInfoSetup = () => {
     formData.append("company_phone", companyPhone)
     formData.append("copy_right", companyCopyRight)
     formData.append("sort_about", companyAbout)
+    formData.append("company_address", companyAddress)
     formData.append("web_link", webSiteLink)
     formData.append("facebook_link", faceBookLink)
     formData.append("insta_link", instagramLink)
@@ -178,7 +189,6 @@ const CompanyInfoSetup = () => {
                 value={companyCopyRight}
                 onChange={(e: any) => setCompanyCopyRight(e.target.value)}
               />
-
               <TccInput
                 sx={{ mt: 4, mb: 6 }}
                 label='Sort About'
@@ -187,6 +197,15 @@ const CompanyInfoSetup = () => {
                 rows={2}
                 value={companyAbout}
                 onChange={(e: any) => setCompanyAbout(e.target.value)}
+              />
+               <TccInput
+                sx={{ mt: 4, mb: 6 }}
+                label='Address'
+                fullWidth
+                multiline
+                rows={6}
+                value={companyAddress}
+                onChange={(e: any) => setCompanyAddress(e.target.value)}
               />
               <Grid container spacing={6}>
                 <Grid item xs={12}>

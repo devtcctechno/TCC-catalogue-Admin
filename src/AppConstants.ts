@@ -248,11 +248,7 @@ export const apiEndPoints = {
   SEARCHABLE_CATEGORY: '/category/searchable',
   DELETE_CATEGORY: '/category/delete',
 
-  TAG_ADD: 'attribute/tag',
-  TAG_GET_ALL: 'attribute/tag',
-  TAG_EDIT: 'attribute/tag',
-  TAG_DELETE: 'attribute/tag/delete',
-  TAG_STATUS: 'attribute/tag/active-inactive',
+  TAG: 'attribute/tag',
 
   ADD_MARKETING_POPUP: 'marketingPopup/add',
   EDIT_MARKETING_POPUP: 'marketingPopup/edit',
