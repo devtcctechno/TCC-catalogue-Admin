@@ -240,7 +240,7 @@ const TccDataTable = ({ label, defaultValue, inputLabel, Options, onChange, valu
                         }
                         {
                             rows.gustName &&
-                            <div>{row[rows.value] ? <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize' }}>
+                            <div>{row[rows.value] ? <Typography noWrap sx={{ fontWeight: 500, color: 'text.secondary', textTransform: 'capitalize', marginTop: '15px' }}>
                                 {row[rows.value]}
                             </Typography> : 
                             <div style={{ display: 'flex' }}><CustomChip

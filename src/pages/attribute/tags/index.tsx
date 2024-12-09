@@ -12,6 +12,8 @@ import { TAG_ADD, TAG_DELETE, TAG_EDIT, TAG_GET_ALL, TAG_STATUS } from 'src/serv
 import { toast } from 'react-hot-toast'
 import { ICommonPagination } from 'src/data/interface'
 import DeleteDataModel from 'src/customComponents/delete-model'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 
 const Tags = () => {
@@ -25,9 +27,9 @@ const Tags = () => {
   const [result, setResult] = useState([])
   const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
   const [showModel, setShowModel] = useState(false);
-
+  const [editorDrawerAction, setEditorDrawerAction] = useState(false)
   const toggleAddTagsDrawer = () => setDrawerAction(!drawerAction)
-
+  const toggleEditorDrawer = () => setEditorDrawerAction(!editorDrawerAction)
   const defaultValues = {
     tagsName: tagsName,
   }
@@ -130,11 +132,10 @@ const Tags = () => {
 
   const tagEditApi = async (data: any) => {
     const payload = {
-      "id": tagsId,
       "name": data.tagsName,
     };
     try {
-      const data = await TAG_EDIT(payload);
+      const data = await TAG_EDIT(tagsId, payload);
       if (data.code === 200 || data.code === "200") {
         toast.success(data.message);
         toggleAddTagsDrawer();
@@ -159,12 +160,8 @@ const Tags = () => {
   }
 
   const tagDeleteApi = async () => {
-    const payload = {
-      "id": tagsId,
-    };
-
     try {
-      const data = await TAG_DELETE(payload);
+      const data = await TAG_DELETE(tagsId);
       if (data.code === 200 || data.code === "200") {
         toast.success(data.message);
         setShowModel(!showModel);
@@ -182,12 +179,8 @@ const Tags = () => {
   //////////////////// STATUS API ///////////////////////
 
   const tagStatusApi = async (checked: boolean, row: any) => {
-    const payload = {
-      "id": row.id,
-      "is_active": checked ? '1' : '0',
-    };
     try {
-      const data = await TAG_STATUS(payload);
+      const data = await TAG_STATUS(row.id);
       if (data.code === 200 || data.code === "200") {
         toast.success(data.message);
         tagGetallApi(pagination);
@@ -239,6 +232,10 @@ const Tags = () => {
     }
   }
 
+  const onInfoSubmit = (data: any) => {
+    toggleEditorDrawer()
+  }
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -254,6 +251,10 @@ const Tags = () => {
                 clearFormDataHandler()
               }}
               ButtonName='Add Tags'
+              infoButton
+              infotoggle={() => {
+                toggleEditorDrawer()
+              }}
             />
 
           </Box>
@@ -319,6 +320,12 @@ const Tags = () => {
           </form>
         </Box>
       </Drawer>
+      <InfoSection
+        onsubmit={onInfoSubmit}
+        info_key={Info_Key.Tag}
+        drawerTitle="Tag Info"
+        drawerToggle={() => toggleEditorDrawer()}
+        drawerACtion={editorDrawerAction} />
       <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={tagDeleteApi} />
     </Grid>
   )

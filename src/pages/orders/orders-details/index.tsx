@@ -533,26 +533,32 @@ const OrderDetails = () => {
                           <b>Phone: </b>
                           {shippingData.phone_number}
                         </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
+                        {shippingData.house_builing && <Typography sx={{ fontSize: "13px" }}>
                           <b>Address : </b>
                           {shippingData.house_builing}{" "}
-                        </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
+                        </Typography>}
+                        {shippingData.area_name && <Typography sx={{ fontSize: "13px" }}>
                           <b>Area Name : </b>
                           {shippingData.area_name}{" "}
-                        </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
-                          <b>City:</b> {orderData?.shipping_add_city}
-                        </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
+                        </Typography>}
+                        {orderData?.shipping_add_city && 
+                         <Typography sx={{ fontSize: "13px" }}>
+                         <b>City:</b> {orderData?.shipping_add_city}
+                       </Typography>
+                        }
+                        {orderData?.shipping_add_state && <Typography sx={{ fontSize: "13px" }}>
                           <b>State:</b> {orderData?.shipping_add_state}
-                        </Typography>
+                        </Typography>}
+                        {shippingData.pincode && 
                         <Typography sx={{ fontSize: "13px" }}>
-                          <b>Zip code: </b> {shippingData.pincode}
-                        </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
-                          <b>Country:</b> {orderData?.shipping_add_country}
-                        </Typography>
+                        <b>Zip code: </b> {shippingData.pincode}
+                      </Typography>
+                        }
+                       {orderData?.shipping_add_country && 
+                       <Typography sx={{ fontSize: "13px" }}>
+                       <b>Country:</b> {orderData?.shipping_add_country}
+                     </Typography>
+                       } 
                       </Box>
                       <Box>
                         <Typography sx={{ fontSize: "13px" }} >
