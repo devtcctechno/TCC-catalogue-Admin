@@ -159,7 +159,6 @@ const LoginPage = () => {
             dark_image_path: `${companyInfo?.images?.darakImage}`, 
             favicon_image_path: `${companyInfo?.images?.faviconImage}`,
              company_name: `${companyInfo?.companyInfo?.company_name}`,
-             company_name: `${companyInfo?.companyInfo?.company_name}`,
              company_phone: `${companyInfo?.companyInfo?.company_phone}`,
              web_link: `${companyInfo?.companyInfo?.web_link}`,
              company_address: `${companyInfo?.companyInfo?.company_address}`
@@ -173,7 +172,6 @@ const LoginPage = () => {
           const finalData = { 
             dark_image_path: `${companyInfo?.images?.darakImage}`, 
             favicon_image_path: `${companyInfo?.images?.faviconImage}`,
-             company_name: `${companyInfo?.companyInfo?.company_name}`,
              company_name: `${companyInfo?.companyInfo?.company_name}`,
              company_phone: `${companyInfo?.companyInfo?.company_phone}`,
              web_link: `${companyInfo?.companyInfo?.web_link}`,
