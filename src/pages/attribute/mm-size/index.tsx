@@ -1,4 +1,3 @@
-
 // ** MUI Imports
 import { Divider, CardHeader, Grid, Card, Drawer, Button, FormControl, TextField, FormHelperText } from '@mui/material'
 import { useEffect, useState } from 'react'
@@ -16,6 +15,8 @@ import { Controller, useForm } from 'react-hook-form'
 import { ADD_MM_SIZE, DELETE_MM_SIZE, EDIT_MM_SIZE, GET_MM_SIZE, STATUS_UPDATE_MM_SIZE } from 'src/services/AdminServices'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 const schema = yup.object().shape({
     mmSizeValue: yup.string()
@@ -249,6 +250,10 @@ const MMSize = () => {
         }
     }
 
+    const onInfoSubmit = (data: any) => {
+        toggleEditorDrawer()
+    }
+
     return (
         <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -265,8 +270,10 @@ const MMSize = () => {
 
                             }}
                             ButtonName='Add MM Size'
-                            // infoButton
-                            infotoggle={toggleEditorDrawer}
+                            infoButton
+                            infotoggle={() => {
+                                toggleEditorDrawer()
+                            }}
                         />
 
                     </Box>
@@ -367,6 +374,12 @@ const MMSize = () => {
                     </form>
                 </Box>
             </Drawer>
+            <InfoSection
+                onsubmit={onInfoSubmit}
+                info_key={Info_Key.MM_Size}
+                drawerTitle="MM Size Info"
+                drawerToggle={() => toggleEditorDrawer()}
+                drawerACtion={editorDrawerAction} />
             <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={deleteApi} />
         </Grid>
     )

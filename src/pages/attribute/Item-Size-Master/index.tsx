@@ -12,6 +12,8 @@ import { ICommonPagination } from 'src/data/interface'
 import { createPagination } from 'src/utils/sharedFunction'
 import { Controller, useForm } from 'react-hook-form'
 import DeleteDataModel from 'src/customComponents/delete-model'
+import InfoSection from 'src/@core/components/common/info-drawer/info-drawer'
+import { Info_Key } from 'src/data/enum'
 
 const Item_Size_Master = () => {
 
@@ -24,9 +26,9 @@ const Item_Size_Master = () => {
     const [result, setResult] = useState([])
     const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
     const [showModel, setShowModel] = useState(false);
-
+    const [editorDrawerAction, setEditorDrawerAction] = useState(false)
     const toggleAddItemSizeDrawer = () => setDrawerAction(!drawerAction)
-
+    const toggleEditorDrawer = () => setEditorDrawerAction(!editorDrawerAction)
     const defaultValues = {
         itemSizeValue: itemSizeValue,
     }
@@ -236,6 +238,10 @@ const Item_Size_Master = () => {
         }
     }
 
+    const onInfoSubmit = (data: any) => {
+        toggleEditorDrawer()
+    }
+
     return (
         <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -251,6 +257,10 @@ const Item_Size_Master = () => {
                                 clearFormDataHandler()
                             }}
                             ButtonName='Add Item Size'
+                            infoButton
+                            infotoggle={() => {
+                                toggleEditorDrawer()
+                            }}
                         />
 
                     </Box>
@@ -316,6 +326,12 @@ const Item_Size_Master = () => {
                     </form>
                 </Box>
             </Drawer>
+            <InfoSection
+                onsubmit={onInfoSubmit}
+                info_key={Info_Key.Item_Size}
+                drawerTitle="Item Size Info"
+                drawerToggle={() => toggleEditorDrawer()}
+                drawerACtion={editorDrawerAction} />
             <DeleteDataModel showModel={showModel} toggle={toggleModel} onClick={deleteApi} />
 
         </Grid>
