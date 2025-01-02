@@ -4,7 +4,6 @@ import Router, { useRouter } from 'next/router'
 import { forwardRef, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { appErrors, FIELD_REQUIRED } from "src/AppConstants";
-import TccEditor from "src/customComponents/Form-Elements/editor";
 import TccSelect from "src/customComponents/Form-Elements/select";
 import { COUPON_DISCOUNT_TYPE, COUPON_DURATION } from "src/data/enum";
 import TccInput from "src/customComponents/Form-Elements/inputField";
@@ -15,6 +14,7 @@ import DatePicker from 'react-datepicker'
 import format from "date-fns/format";
 import { ADD_COUPON, EDIT_COUPON, GET_BY_ID_COUPON } from "src/services/AdminServices";
 import toast from "react-hot-toast";
+import Editor from "src/customComponents/ck-editor";
 
 interface PickerProps {
     label?: string
@@ -121,7 +121,6 @@ const CouponDetail = () => {
 
     })
     const [editorData, setEditorData] = useState("")
-    const [edit, setEdit] = useState<any>('<p></p>')
     const [startDate, setStartDate] = useState<DateType>(new Date())
     const [endDate, setEndDate] = useState<DateType>(new Date())
     const [detailId, setDetailId] = useState(0)
@@ -183,6 +182,11 @@ const CouponDetail = () => {
         setEndDate(end)
     }
 
+    const handleEditorChange = (editor: any) => {
+        const data = editor
+        setEditorData(data)
+    }
+
     // ** GET ALL API CALL
     const getAllApi = async (id: number) => {
         try {
@@ -198,6 +202,7 @@ const CouponDetail = () => {
                 setValue("name", data?.data?.name)
                 setValue("code", data?.data?.coupon_code)
                 setValue("discount_type", data?.data?.discount_type)
+                setEditorData(data?.data?.description)
                 setValue("discount_amount", data?.data?.discount_amount)
                 setValue("discount_amount_currency", data?.data?.discount_amount_currency)
                 setValue("duration", data?.data?.duration)
@@ -356,7 +361,13 @@ const CouponDetail = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography sx={{ mb: 1 }}>Description</Typography>
-                                <TccEditor wrapperClassName="" getHtmlData={setEditorData} data={edit} called={true} />
+                                <Editor
+                                    onChange={(value: any) => {
+                                        handleEditorChange(value)
+                                    }}
+                                    value={editorData}
+                                    label={"Descrption"}
+                                />
                             </Grid>
                             <Grid item xs={6} sx={{ mt: 4 }}>
                                 <FormControl fullWidth>

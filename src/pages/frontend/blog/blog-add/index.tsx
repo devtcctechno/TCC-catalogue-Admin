@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react'
 import { CardContent, Divider, CardHeader, Grid, Card, Drawer, Typography, IconButton, Button, FormControl, TextField, FormHelperText } from '@mui/material'
 import { Fragment, forwardRef, useEffect, useState } from 'react'
 import TccSingleFileUpload from 'src/customComponents/Form-Elements/file-upload/singleFile-upload'
-import TccEditor from 'src/customComponents/Form-Elements/editor'
 import { Controller, useForm } from 'react-hook-form'
 import { appErrors, FIELD_REQUIRED, SEARCH_DELAY_TIME } from 'src/AppConstants'
 import { ADD_BLOG, EDIT_BLOG, GET_BY_ID_BLOG } from 'src/services/AdminServices'
@@ -14,7 +13,7 @@ import { addDays, format } from 'date-fns'
 import DatePickerWrapper from 'src/customComponents/Form-Elements/styles/data-picker'
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import moment from 'moment'
-
+import Editor from 'src/@core/components/custom-ckeditor'
 
 interface PickerProps {
     label?: string
@@ -46,8 +45,6 @@ const AddBlog = () => {
     const [bannerimageshow, setBannerImageShow] = useState<string>()
     const [removeimage, setRemoveImage] = useState("0")
     const [editerData, setEditerData] = useState("")
-    const [edit, setEdit] = useState<String>('<p></p>')
-    const [called, setCalled] = useState(true)
     const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
     const [statusTypeData, setStatusTypeData] = useState('')
     const [publishDate, setPublishDate] = useState<any>(new Date())
@@ -94,8 +91,14 @@ const AddBlog = () => {
 
     const clearFormDataHandler = () => {
         reset()
-        setEditerData('<p><p>')
+        setEditerData('')
     }
+
+    const handleEditorChange = (editor: any) => {
+        const data = editor
+        setEditerData(data)
+    }
+
     /////////////////////// GETBYID API ///////////////////////
     const getByIdData = async (data: any) => {
         const payload = {
@@ -108,7 +111,7 @@ const AddBlog = () => {
                 setMetaTitle(data.data.meta_title)
                 setValue('title', data.data.name)
                 setValue('slug', data.data.slug)
-                setEdit(data.data.description)
+                setEditerData(data.data.description)
                 setValue('author', data.data.author)
                 setValue('metatitle', data.data.meta_title)
                 setValue('metakeyword', data.data.meta_keywords)
@@ -134,13 +137,11 @@ const AddBlog = () => {
         let blogId: string = id as string
         if (blogId != undefined) {
             setDialogTitle('Edit')
-            setCalled(true)
             getByIdData(blogId)
 
         } else {
             setDialogTitle('Add')
             deafultDateData()
-            setCalled(true)
         }
         setTestId(parseInt(blogId))
 
@@ -380,7 +381,13 @@ const AddBlog = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography sx={{ mb: 1 }}>Description</Typography>
-                                <TccEditor wrapperClassName="" getHtmlData={setEditerData} data={edit} called={called} />
+                                <Editor
+                                    onChange={(value: any) => {
+                                        handleEditorChange(value)
+                                    }}
+                                    value={editerData}
+                                    label={"Descrption"}
+                                />
                             </Grid>
                             <Grid item xs={6}>
                                 <Typography sx={{ mt: 4 }}>Image</Typography>

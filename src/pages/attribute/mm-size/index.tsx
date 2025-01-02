@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import TCCTableHeader from 'src/customComponents/data-table/header'
 import TccDataTable from 'src/customComponents/data-table/table'
 import Box from '@mui/material/Box'
-import TccEditor from 'src/customComponents/Form-Elements/editor'
 import DrawerHeader from 'src/customComponents/components/drawer-header'
 import { appErrors, FIELD_REQUIRED, NON_NEGATIVE_VALUE, SEARCH_DELAY_TIME } from 'src/AppConstants'
 import { toast } from 'react-hot-toast'
@@ -35,9 +34,6 @@ const MMSize = () => {
     const [result, setResult] = useState([])
     const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
     const [showModel, setShowModel] = useState(false);
-    const [editerData, setEditerData] = useState("")
-    const [edit, setEdit] = useState<String>('<p></p>')
-    const [called, setCalled] = useState(true)
     const toggleAddmMSizeDrawer = () => setDrawerAction(!drawerAction)
 
     const defaultValues = {
@@ -337,37 +333,6 @@ const MMSize = () => {
                                 toggleAddmMSizeDrawer()
                                 clearFormDataHandler()
                             }}>
-                                Cancel
-                            </Button>
-                        </Box>
-                    </form>
-                </Box>
-            </Drawer>
-
-            <Drawer
-                open={editorDrawerAction}
-                anchor='right'
-                variant='temporary'
-                onClose={toggleEditorDrawer}
-                ModalProps={{ keepMounted: true }}
-                sx={{ '& .MuiDrawer-paper': { width: { xs: 800, sm: 800 } } }}
-            >
-
-                <DrawerHeader
-                    title='Add Carat Size Info'
-                    onClick={toggleEditorDrawer}
-                />
-
-                <Box sx={{ p: theme => theme.spacing(0, 6, 6) }}>
-                    <form>
-                        <TccEditor wrapperClassName="" getHtmlData={setEditerData} data={edit} called={called} />
-                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 4 }}>
-                            {dialogTitle === 'Add' ? <Button variant='contained' sx={{ mr: 3 }}>
-                                Submit
-                            </Button> : <Button variant='contained' sx={{ mr: 3 }}>
-                                Edit
-                            </Button>}
-                            <Button variant='outlined' color='secondary' onClick={toggleEditorDrawer}>
                                 Cancel
                             </Button>
                         </Box>

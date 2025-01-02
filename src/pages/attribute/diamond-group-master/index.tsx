@@ -361,14 +361,13 @@ const DiamondgroupMaster = () => {
                 setFile(undefined)
                 toast.success(data.message);
             } else {
-                toast.error(data.message);
-                return toast.error(data.data.map((t: any) => t.error_message));
+                toast.error(data?.message);
+                return toast.error(data?.data?.map((t: any) => t?.error_message));
             }
         } catch (e: any) {
             toast.error(e?.data?.message || appErrors.UNKNOWN_ERROR_TRY_AGAIN);
-            setBulkErrorMessage(e.data.data)
+            setBulkErrorMessage(e?.data?.data)
         }
-
         return false;
     }
 
@@ -559,10 +558,9 @@ const DiamondgroupMaster = () => {
             throw error
         }
     }
-    console.log("diamondGroupMasterPagination.current_page", diamondGroupMasterPagination.current_page)
     return (
         <Grid container spacing={6}>
-            {bulkErrorMessage != null && bulkErrorMessage.length > 0 ?
+            {bulkErrorMessage !== undefined && bulkErrorMessage !== null && bulkErrorMessage.length > 0 ?
                 <Grid item xs={12} sm={12}>
                     <TableContainer component={Paper} sx={{ maxHeight: 350 }}>
                         <Table stickyHeader aria-label='sticky table'>

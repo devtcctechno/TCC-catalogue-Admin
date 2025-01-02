@@ -12,8 +12,7 @@ import { ICommonPagination } from 'src/data/interface'
 import { ADD_PAGE_SETTINGS, DELETE_PAGE_SETTINGS, EDIT_PAGE_SETTINGS, GET_ALL_PAGE_SETTINGS, RESTRICT_STATUS, STATUS_PAGE_SETTINGS } from 'src/services/AdminServices'
 import DeleteDataModel from 'src/customComponents/delete-model'
 import { Controller, useForm } from 'react-hook-form'
-import TccEditor from 'src/customComponents/Form-Elements/editor'
-
+import Editor from 'src/@core/components/custom-ckeditor'
 const PageSetting = () => {
 
     let timer: any;
@@ -27,8 +26,7 @@ const PageSetting = () => {
     const [dialogTitle, setDialogTitle] = useState<'Add' | 'Edit'>('Add')
     const [allData, setAllData] = useState([]);
     const [pagination, setPagination] = useState({ ...createPagination(), search_text: "" });
-    const [edit, setEdit] = useState<String>('<p></p>')
-    const [called, setCalled] = useState(true)
+    const [editorData, setEditorData] = useState('')
     const [errorData, setErrorData] = useState(false)
     const toggleAddDrawer = () => setDrawerAction(!drawerAction);
     const toggleEditorDrawer = () => setEditorDrawerAction(!editorDrawerAction)
@@ -37,7 +35,7 @@ const PageSetting = () => {
     const defaultValues = {
         pageName: pageName,
         urlValue: urlValue,
-        edit: ''
+        edit: editorData
     }
     const {
         control,
@@ -49,9 +47,6 @@ const PageSetting = () => {
         defaultValues
     })
 
-    const setEditorData = (htmlData: any) => {
-        setValue('edit', htmlData);
-    };
     // **  Get API 
 
     const getAllDataApi = async (mbPagination: ICommonPagination) => {
@@ -206,7 +201,7 @@ const PageSetting = () => {
     // ** Edit & Delete handler
 
     const editOnClickHandler = (data: any) => {
-        setEdit(data.description)
+        setEditorData(data.description)
         setValue("pageName", data.name)
         setValue("urlValue", data.url)
         setId(data.id)
@@ -268,7 +263,7 @@ const PageSetting = () => {
     const clearFormData = () => {
         setFormErrorData(false)
         reset()
-        setEdit("<p></p>")
+        setEditorData("")
     }
 
     const onsubmit = (data: any) => {
@@ -284,6 +279,11 @@ const PageSetting = () => {
                 editDataApi(data)
             }
         }
+    }
+
+    const handleEditorChange = (editor: any) => {
+        const data = editor
+        setEditorData(data)
     }
 
     return (
@@ -383,18 +383,19 @@ const PageSetting = () => {
                                 control={control}
                                 rules={{ required: true }}
                                 render={({ field }: any) => (
-                                    <TccEditor
-                                        wrapperClassName={(formErrorData === true || errors.edit) && errorData === true ? "demo-wrapper" : 'editor-validaton-wrapper'}
-                                        getHtmlData={setEditorData}
-                                        data={edit}
-                                        called={called}
-                                        errorData={setErrorData}
+                                    <Editor
+                                        onChange={(value: any) => {
+                                            handleEditorChange(value)
+                                            field.onChange(value)
+                                        }}
+                                        value={editorData}
                                         error={Boolean(errors.edit)}
-                                        {...field}
                                     />
                                 )}
                             />
-                            {(formErrorData === true || errors.edit) && errorData === true && <FormHelperText sx={{ color: 'error.main' }}>{FIELD_REQUIRED}</FormHelperText>}
+                            {errors.edit && (
+                                <FormHelperText sx={{ color: 'error.main' }}>{FIELD_REQUIRED}</FormHelperText>
+                            )}
                         </FormControl>
                         <Box sx={{ display: 'flex', alignItems: 'center', mt: 4 }}>
                             <Button variant='contained' sx={{ mr: 3 }} type="submit">
