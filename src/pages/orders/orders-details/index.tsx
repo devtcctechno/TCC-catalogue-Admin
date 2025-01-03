@@ -145,16 +145,19 @@ const OrderDetails = () => {
               ) : (
                 <Typography>{item.discount}</Typography>
               ),
-            gemstone: item.order_details_json.gemstone,
-            engraving: item.order_details_json.engraving,
-            product_type: item.order_details_json.product_type,
+            gemstone: item?.order_details_json?.gemstone,
+            engraving: item?.order_details_json?.engraving,
+            product_type: item.order_details_json?.product_type,
             sort_description: item?.product
               ? item?.product?.sort_description
               : item?.sort_description,
           });
         }
         setOrderDetailData(orderTableData);
-        setShippingData(data.data.order_shipping_address);
+        const updateShippingData = {area_name: data?.data?.order_shipping_address.area_name, 
+          house_builing: data?.data?.order_shipping_address.house_builing, 
+          pincode: data?.data?.order_shipping_address.pincode}
+        setShippingData(updateShippingData)
       } else {
         return toast.error(data.message);
       }
@@ -305,12 +308,12 @@ const OrderDetails = () => {
                     <Box
                       sx={{
                         display: "flex",
-                        justifyContent: "space-between",
+                        justifyContent: "end",
                         mr: 8,
                         ml: 8,
                       }}
                     >
-                      <Typography sx={{ fontSize: "13px" }}>
+                      <Typography sx={{ fontSize: "13px", mr: 8 }}>
                         <b>Total:</b>
                       </Typography>
                       {orderData?.sub_total === null ? (
@@ -320,7 +323,7 @@ const OrderDetails = () => {
                       ) : (
                         <Typography
                           sx={{ fontSize: "13px" }}
-                        >{`${CURRENCY_VALUE}${orderData?.sub_total}`}</Typography>
+                        >{`${CURRENCY_VALUE}${orderData?.sub_total?.toFixed(2)}`}</Typography>
                       )}
                     </Box>
                     {/* <Divider sx={{ mb: 2, mt: 1 }} />
@@ -519,43 +522,35 @@ const OrderDetails = () => {
                     </CardContent>
                     <Divider />
                     <CardContent
-                      sx={{ display: "flex", justifyContent: "space-between", padding: '30px' }}
+                      sx={{ display: "flex", justifyContent: `${shippingData.area_name !== "" ? "space-between" : "start"}`, padding: '30px' }}
                     >
                       <Box>
-                        <Typography sx={{ fontSize: "13px" }} variant="body1">
+                      {shippingData.area_name !== "" && <Typography sx={{ fontSize: "13px" }} variant="body1">
                           <b>Address Details</b>
-                        </Typography>
-                        <Typography sx={{ mt: 4, fontSize: "13px" }}>
-                          <b>Name:</b>{" "}
-                          {orderData?.order_shipping_address?.full_name}
-                        </Typography>
-                        <Typography sx={{ fontSize: "13px" }}>
-                          <b>Phone: </b>
-                          {shippingData.phone_number}
-                        </Typography>
-                        {shippingData.house_builing && <Typography sx={{ fontSize: "13px" }}>
+                        </Typography>}
+                        {shippingData.house_builing && <Typography sx={{ mt: 4,fontSize: "13px" }}>
                           <b>Address : </b>
                           {shippingData.house_builing}{" "}
                         </Typography>}
-                        {shippingData.area_name && <Typography sx={{ fontSize: "13px" }}>
+                        {shippingData.area_name && <Typography sx={{ mt: 4 , fontSize: "13px" }}>
                           <b>Area Name : </b>
                           {shippingData.area_name}{" "}
                         </Typography>}
                         {orderData?.shipping_add_city && 
-                         <Typography sx={{ fontSize: "13px" }}>
+                         <Typography sx={{mt: 4, fontSize: "13px" }}>
                          <b>City:</b> {orderData?.shipping_add_city}
                        </Typography>
                         }
-                        {orderData?.shipping_add_state && <Typography sx={{ fontSize: "13px" }}>
+                        {orderData?.shipping_add_state && <Typography sx={{mt: 4 ,fontSize: "13px" }}>
                           <b>State:</b> {orderData?.shipping_add_state}
                         </Typography>}
                         {shippingData.pincode && 
-                        <Typography sx={{ fontSize: "13px" }}>
+                        <Typography sx={{mt: 4, fontSize: "13px" }}>
                         <b>Zip code: </b> {shippingData.pincode}
                       </Typography>
                         }
                        {orderData?.shipping_add_country && 
-                       <Typography sx={{ fontSize: "13px" }}>
+                       <Typography sx={{mt: 4, fontSize: "13px" }}>
                        <b>Country:</b> {orderData?.shipping_add_country}
                      </Typography>
                        } 
@@ -563,6 +558,20 @@ const OrderDetails = () => {
                       <Box>
                         <Typography sx={{ fontSize: "13px" }} >
                           <b>Contact Info</b>
+                        </Typography>
+                        <Typography
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            mt: 4,
+                            fontSize: "13px",
+                          }}
+                        >
+                          <Icon
+                            icon="tabler:user-circle"
+                            style={{ fontSize: "20px", marginRight: 15 }}
+                          />
+                          {orderData?.user_name}
                         </Typography>
                         <Typography
                           sx={{
