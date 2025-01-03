@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import TCCTableHeader from 'src/customComponents/data-table/header'
 import TccDataTable from 'src/customComponents/data-table/table'
 import Box from '@mui/material/Box'
-import TccEditor from 'src/customComponents/Form-Elements/editor'
 import DrawerHeader from 'src/customComponents/components/drawer-header'
 import { SETTING_WEIGHT_ADD, SETTING_WEIGHT_DELETE, SETTING_WEIGHT_EDIT, SETTING_WEIGHT_GET_ALL, SETTING_WEIGHT_STATUS } from 'src/services/AdminServices'
 import { toast } from 'react-hot-toast'
@@ -362,8 +361,6 @@ const SettingCaratWeight = () => {
 
         <Box sx={{ p: theme => theme.spacing(0, 6, 6) }}>
           <form>
-
-            <TccEditor wrapperClassName="" getHtmlData={setEditerData} data={edit} called={called} />
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 4 }}>
               <Button variant='contained' sx={{ mr: 3 }}>
                 Submit

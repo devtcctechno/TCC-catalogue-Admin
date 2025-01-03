@@ -14,6 +14,7 @@ import { appErrors, FIELD_REQUIRED, SEARCH_DELAY_TIME } from 'src/AppConstants'
 import { ADD_STATIC_PAGE, DELETE_STATIC_PAGE, EDIT_STATIC_PAGE, GET_ALL_STATIC_PAGE, STATUS_UPDATE_STATIC_PAGE } from 'src/services/AdminServices'
 import DeleteDataModel from 'src/customComponents/delete-model'
 import { Controller, useForm } from 'react-hook-form'
+import Editor from 'src/customComponents/ck-editor'
 
 const StaticPageList = () => {
 
@@ -59,12 +60,12 @@ const StaticPageList = () => {
 
   const clearFormData = () => {
     reset()
-    setEdit('<p><p>')
+    setEditerData('')
   }
   const editOnClickHandler = (data: any) => {
     setValue("name", data.page_title)
     setValue("slug", data.slug)
-    setEdit(data.content)
+    setEditerData(data.content)
     setStaticPageId(data.id)
     setDialogTitle('Edit')
     toggleAddStaticPageDrawer()
@@ -259,6 +260,11 @@ const StaticPageList = () => {
     }
   }
 
+  const handleEditorChange = (editor: any) => {
+    const data = editor
+    setEditerData(data)
+  }
+
   return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
@@ -349,7 +355,13 @@ const StaticPageList = () => {
               {errors.slug && <FormHelperText sx={{ color: 'error.main' }}>{FIELD_REQUIRED}</FormHelperText>}
             </FormControl>
 
-            <TccEditor wrapperClassName="" getHtmlData={setEditerData} data={edit} called={called} />
+            <Editor
+              onChange={(value: any) => {
+                handleEditorChange(value)
+              }}
+                value={editerData}
+                label={"Descrption"}
+              />
 
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 4 }}>
               <Button variant='contained' sx={{ mr: 3 }} type="submit">

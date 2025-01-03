@@ -35,6 +35,9 @@ code[class*='language-'] {
   padding: 0;
 }
 
+.ck-editor__editable {
+  height: 150px !important;
+}
 /* .config-filter-content::-webkit-scrollbar {
   width: 5px;
 } */
