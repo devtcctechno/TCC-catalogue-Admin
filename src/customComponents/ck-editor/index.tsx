@@ -3,7 +3,6 @@ import { CKEditor } from '@ckeditor/ckeditor5-react'
 import React from 'react'
 
 const Editor = ({ value, onChange }: any) => {
-    
     const uploadImage = async (file: File | null) => {
         try {
             if (!file) {
@@ -43,7 +42,7 @@ const Editor = ({ value, onChange }: any) => {
                     onChange(data)
                 }}
                 onReady={editor => {
-                    editor.plugins.get('FileRepository').createUploadAdapter = (loader: { file: any }) => {
+                    editor.plugins.get('FileRepository').createUploadAdapter = loader => {
                         return {
                             upload: async () => {
                                 const file = await loader.file
